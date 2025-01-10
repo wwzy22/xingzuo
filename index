@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星座匹配度测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        select, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+        .heart {
+            display: none; /* 默认隐藏爱心 */
+            font-size: 100px;
+            color: #ff69b4; /* 粉色 */
+            animation: heartbeat 1s infinite; /* 跳动动画 */
+        }
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>星座匹配度测试</h1>
+    <label for="maleSign">选择男生星座:</label>
+    <select id="maleSign">
+        <option value="白羊座">白羊座</option>
+        <option value="金牛座">金牛座</option>
+        <option value="双子座">双子座</option>
+        <option value="巨蟹座">巨蟹座</option>
+        <option value="狮子座">狮子座</option>
+        <option value="处女座">处女座</option>
+        <option value="天秤座">天秤座</option>
+        <option value="天蝎座">天蝎座</option>
+        <option value="射手座">射手座</option>
+        <option value="摩羯座">摩羯座</option>
+        <option value="水瓶座">水瓶座</option>
+        <option value="双鱼座">双鱼座</option>
+    </select>
+
+    <label for="femaleSign">选择女生星座:</label>
+    <select id="femaleSign">
+        <option value="白羊座">白羊座</option>
+        <option value="金牛座">金牛座</option>
+        <option value="双子座">双子座</option>
+        <option value="巨蟹座">巨蟹座</option>
+        <option value="狮子座">狮子座</option>
+        <option value="处女座">处女座</option>
+        <option value="天秤座">天秤座</option>
+        <option value="天蝎座">天蝎座</option>
+        <option value="射手座">射手座</option>
+        <option value="摩羯座">摩羯座</option>
+        <option value="水瓶座">水瓶座</option>
+        <option value="双鱼座">双鱼座</option>
+    </select>
+
+    <button onclick="calculateCompatibility()">测试匹配度</button>
+
+    <h2 id="result"></h2>
+    <div id="heart" class="heart">❤️</div> <!-- 跳动的爱心 -->
+
+    <script>
+        function calculateCompatibility() {
+            const maleSign = document.getElementById('maleSign').value;
+            const femaleSign = document.getElementById('femaleSign').value;
+
+            let compatibility;
+
+            // 特殊匹配逻辑
+            if (maleSign === "摩羯座" && femaleSign === "水瓶座") {
+                compatibility = 100; // 摩羯座和水瓶座匹配度为100
+                document.getElementById('heart').style.display = 'block'; // 显示爱心
+            } else {
+                compatibility = Math.floor(Math.random() * 100) + 1; // 其他情况随机生成匹配度
+                document.getElementById('heart').style.display = 'none'; // 隐藏爱心
+            }
+
+            document.getElementById('result').innerText = `${maleSign} 和 ${femaleSign} 的匹配度为 ${compatibility}%`;
+        }
+    </script>
+</body>
+</html>
